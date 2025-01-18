@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afonso Gesualdi Area Confidencial</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Aileron', 'Darker Grotesque', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1f26;
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Estilos do link de contato */
+        .contact-link {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            margin: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1; /* Garantir que o texto fique sobre o fundo */
+            background: none;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        /* Fundo animado ao passar o mouse */
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, #00ccff, transparent);
+            z-index: 0; /* Fundo fica atrás do texto */
+            transition: left 0.4s ease-in-out;
+        }
+
+        /* Texto e borda mudam ao passar o mouse */
+        .contact-link:hover {
+            color: #ffffff; /* Cor do texto */
+            border-color: #00ccff; /* Borda */
+        }
+
+        .contact-link:hover::before {
+            left: 0; /* Ativa a animação do fundo */
+        }
+
+        /* Texto sempre sobre o fundo */
+        .contact-link span {
+            position: relative;
+            z-index: 1; /* Mantém o texto acima do fundo */
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            z-index: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="backgroundCanvas"></canvas>
+        <div class="content">
+            <h1>Área Confidencial</h1>
+            <p>Acesso restrito aos projetos exclusivos.</p>
+            <a href="index.html#home" class="contact-link"><span>Voltar ao Home</span></a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('backgroundCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const colors = ['#007bff', '#00ccff', '#00ff99', '#ff00ff'];
+        const mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = generateParticles(50);
+        }
+
+        function generateParticles(number) {
+            const newParticles = [];
+
+            for (let i = 0; i < number; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = Math.random() * 5 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const dx = (Math.random() - 0.5) * 2;
+                const dy = (Math.random() - 0.5) * 2;
+
+                newParticles.push({ x, y, radius, color, dx, dy });
+            }
+
+            return newParticles;
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.x += particle.dx;
+                particle.y += particle.dy;
+
+                if (particle.x + particle.radius > canvas.width || particle.x - particle.radius < 0) {
+                    particle.dx *= -1;
+                }
+
+                if (particle.y + particle.radius > canvas.height || particle.y - particle.radius < 0) {
+                    particle.dy *= -1;
+                }
+
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+
+                // Interatividade com o mouse
+                const distX = particle.x - mouse.x;
+                const distY = particle.y - mouse.y;
+                const distance = Math.sqrt(distX * distX + distY * distY);
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(particle.x, particle.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = particle.color;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            });
+
+            requestAnimationFrame(drawParticles);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+        });
+
+        resizeCanvas();
+        drawParticles();
+    </script>
+</body>
+</html>

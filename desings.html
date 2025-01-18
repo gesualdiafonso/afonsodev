@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Digital Afonso Dev</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/galery.css">
+    <style>
+        .gallery {
+            column-count: 5;
+            column-gap: 1rem;
+            padding: 2rem 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 204, 255, 0.3);
+            cursor: pointer;
+        }
+        .modal-content {
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2e2e2e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="text-white text-center">
+        <nav class="navbar">
+            <div class="navbarBody">
+                <div class="logo"><a href="#home"></a></div>
+        
+                <!-- Botão de abrir menu -->
+                <button class="openMenu" aria-label="Abrir menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                    </svg>
+                </button>
+        
+                <div class="sidebar">
+                    <div class="sidebarHider">
+                        <!-- Botão de fechar menu -->
+                        <button class="closeMenu" aria-label="Fechar menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined">
+                                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebarBody">
+                        <ul>
+                            <li class="navbarItem"><a class="nabarLink" href="index.html#home">Home</a></li>
+                            <li class="navbarItem"><a class="nabarLink" href="index.html#about">Sobre mim</a></li>
+                            <li class="navbarItem"><a class="nabarLink" href="index.html#service">Serviço</a></li>
+                            <li class="navbarItem"><a class="nabarLink" href="index.html#projects">Projetos</a></li>
+                            <li class="navbarItem"><a class="nabarLink" href="index.html#contact">Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbarElements">
+                    <ul>
+                        <li class="navbarItem"><a class="nabarLink" href="index.html#home">Home</a></li>
+                        <li class="navbarItem"><a class="nabarLink" href="index.html#about">Sobre mim</a></li>
+                        <li class="navbarItem"><a class="nabarLink" href="index.html#service">Serviço</a></li>
+                        <li class="navbarItem"><a class="nabarLink" href="index.html#projects">Projetos</a></li>
+                        <li class="navbarItem"><a class="nabarLink" href="index.html#contact">Contato</a></li>
+                    </ul>
+                    <div class="nav-tab-slider"></div>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <div class="gallery">
+            <img src="assets/portfolio/Banner_Instagram-Afonso Gesualdi.jpg" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal1">
+            <img src="assets/portfolio/22.png" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal2">
+            <img src="assets/portfolio/Carmen-Steffan.jpg" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal3">
+            <img src="assets/portfolio/Cvc-Viagem.jpg" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal4">
+            <img src="assets/portfolio/Fenshu Sushi.png" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal5">
+            <img src="assets/portfolio/Mockup-home.jpg" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal6">
+            <img src="assets/portfolio/pintura 1.png" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal7">
+            <img src="assets/portfolio/Post APS.jpg" alt="Arte Exemplo" data-bs-toggle="modal" data-bs-target="#modal8">
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 Afonso Gesualdi - Todos os Direitos Reservados
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal1Label">Detalhes da Arte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/portfolio/Banner_Instagram-Afonso Gesualdi.jpg" alt="Arte Exemplo">
+                    <p class="mt-3">Descrição sobre este projeto de branding.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal2Label">Detalhes da Arte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/portfolio/22.png" alt="Arte Exemplo">
+                    <p class="mt-3">Descrição sobre este projeto de UX/UI.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicione mais modais para cada imagem conforme necessário -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
