@@ -33,9 +33,33 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         document.getElementById('messageError').textContent = 'Por favor, escreva uma mensagem.';
     }
 
-    // Se tudo estiver válido, submeter o formulário
     if (isValid) {
-        alert('Mensagem enviada com sucesso!');
-        this.submit();
-    }
-})
+        const data = {
+            name: name.value,
+            email: email.value,
+            telefone: telefone.value,
+            message: message.value,
+            company: document.getElementById('company')?.value || '',
+        };
+    
+        fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert('Mensagem enviada com sucesso!');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Houve um erro ao enviar a mensagem. Por favor, tente novamente.');
+                }
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+                alert('Houve um erro ao enviar a mensagem. Por favor, tente novamente.');
+            });
+    }    
+});
