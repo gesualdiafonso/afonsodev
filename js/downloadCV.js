@@ -2,7 +2,7 @@
 
 document.getElementById('downloadCV').addEventListener('click', function(){
 
-    const cvUrl = 'assets/CV/Afonso-CV.pdf';
+    const cvUrl = 'assets/CV-AFONSO.pdf';
 
     const link = document.createElement('a');
     link.href = cvUrl;

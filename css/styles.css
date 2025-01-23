@@ -1001,6 +1001,28 @@ button:focus {
 
 /* Desktops: 990px até 1980px */
 @media (min-width: 990px) and (max-width: 1980px){
+    p{
+        font-size: 1.3rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+    ul li {
+        font-size: 1.2rem;
+    }
+    span{
+        font-size: 1.2rem;
+    }
+    .title, .title-2{
+        font-size: 2.5rem;
+    }
+    .subtitle{
+        font-size: 2rem;
+    }
+
     nav{
         position: absolute;
         bottom: 0;
@@ -1087,6 +1109,28 @@ button:focus {
         display: none; /* Esconde o botão de abrir menu */
     }
 
+    .container{
+        margin: 0 auto;
+    }
+    .whoIs{
+        margin-top: 2rem;
+    }
+    .motivation p{
+        font-size: 1.4rem;
+    }
+    .motivation ul li{
+        font-size: 1.2rem;
+    }
+    .motivation .lista{
+        margin: 0 auto;
+    }
+    .skill p{
+        font-size: 1.3rem;
+    }
+    .service-item{
+        width: 30%;
+        margin: 1rem;
+    }
     #contact .container {
         grid-template-columns: 2fr 3fr; /* Texto ocupa 2/5, formulário 3/5 */
         align-items: center;
