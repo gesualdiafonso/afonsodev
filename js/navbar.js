@@ -43,7 +43,14 @@ class NavigationPage {
 
         // Adicionando evento de clique aos links do menu
         document.querySelectorAll('.navbarItem a').forEach((tab) => {
-            tab.addEventListener('click', (event) => this.onTabClick(event, tab));
+            tab.addEventListener('click', (event) => {
+                const href = tab.getAttribute('href');
+                if (href.includes('.html') && !href.startsWith('#')) {
+                    // Permite navegação normal para outras páginas HTML
+                    return;
+                }
+                this.onTabClick(event, tab);
+            });
         });
 
         // Eventos de scroll e resize
@@ -109,6 +116,12 @@ class NavigationPage {
                     newCurrentId = id;
                     newCurrentTab = tab;
                 }
+            }
+            if (this.currentTab) {
+                document.querySelectorAll('.navbarItem a').forEach((link) => {
+                    link.classList.remove('active');
+                });
+                this.currentTab.classList.add('active');
             }
         });
 
