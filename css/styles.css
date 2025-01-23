@@ -1115,6 +1115,10 @@ button:focus {
     .whoIs{
         margin-top: 2rem;
     }
+    .motivation{
+        margin: 0 3rem;
+        padding: 0 4rem;
+    }
     .motivation p{
         font-size: 1.4rem;
     }
@@ -1124,21 +1128,75 @@ button:focus {
     .motivation .lista{
         margin: 0 auto;
     }
+    .pilares{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .skill{
+        margin: 0 auto;
+        padding: 0 5rem;
+    }
     .skill p{
         font-size: 1.3rem;
+    }
+    .soft-skills{
+        margin: 0 auto;
+        padding: 0 6rem;
+    }
+    .soft-skills .lista li{
+        font-size: 1.4rem;
+    }
+    .icons{
+        padding: 0 2rem;
+        text-align: center;
+    }
+    .icons i{
+        font-size: 50px;
+        margin: 0 0.6rem;
+    }
+    .icons .ia svg, .icons .ps svg,
+    .icons .in svg, .icons .tailw svg, 
+    .icons .query svg, .icons .ts svg{
+        width: 50px;
+        height: 50px;
+    }
+    .service-descrip{
+        padding: 0 5rem;
+    }
+    .service-grid{
+        justify-content: center;
+        padding: 1rem 3rem;
     }
     .service-item{
         width: 30%;
         margin: 1rem;
+    }
+    .service-item .citas li{
+        font-size: 1rem;
     }
     #contact .container {
         grid-template-columns: 2fr 3fr; /* Texto ocupa 2/5, formulário 3/5 */
         align-items: center;
         gap: 40px;
     }
-
-    .text-form {
+    #contact .title-head{
+        font-size: 3rem;
+    }
+    #contact .text-form{
         padding: 20px 40px;
+    }
+    #contact .text-form h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    #contact .text-form p{
+        font-size: 1.2rem;
+    }
+    #contact .contact-info .contact-me{
+        font-size: 1.3rem;
+    }
+    #contact .contact-info p{
+        font-size: 1rem;
     }
 
     .formulario {
