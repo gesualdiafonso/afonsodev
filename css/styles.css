@@ -89,7 +89,7 @@ strong{
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
-    text-fill-color: transparent;
+    -text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
     animation: metallicEffect 3s linear infinite;
 }
