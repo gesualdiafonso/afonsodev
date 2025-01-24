@@ -1,13 +1,14 @@
-document.getElementById('contactForm').addEventListener('submit', function(event){
-    event.preventDefault()
+document.getElementById('contactForm').addEventListener('submit', function (event) {
     let isValid = true;
 
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const telefone = document.getElementById('telefone');
     const message = document.getElementById('message');
+    const company = document.getElementById('company');
 
-    document.querySelectorAll('.error-message').forEach(e => e.textContent = '');
+    // Remove mensagens de erro anteriores
+    document.querySelectorAll('.error-message').forEach(e => (e.textContent = ''));
 
     // Valida Nome
     if (name.value.trim() === '') {
@@ -22,9 +23,10 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     }
 
     // Valida Telefone
-    if (!/^\+\d{1,4} \d{1,4} \d{4,10}$/.test(telefone.value)) {
+    if (!/^\d+$/.test(telefone.value)) {
         isValid = false;
-        document.getElementById('telefoneError').textContent = 'Por favor, insira um número de WhatsApp válido no formato "+XX X XXXX-XXXX".';
+        document.getElementById('telefoneError').textContent =
+            'Por favor, insira apenas números no campo de telefone.';
     }
 
     // Valida Mensagem
@@ -33,33 +35,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         document.getElementById('messageError').textContent = 'Por favor, escreva uma mensagem.';
     }
 
-    if (isValid) {
-        const data = {
-            name: name.value,
-            email: email.value,
-            telefone: telefone.value,
-            message: message.value,
-            company: document.getElementById('company')?.value || '',
-        };
-    
-        fetch('http://localhost:3000/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    alert('Mensagem enviada com sucesso!');
-                    document.getElementById('contactForm').reset();
-                } else {
-                    alert('Houve um erro ao enviar a mensagem. Por favor, tente novamente.');
-                }
-            })
-            .catch((error) => {
-                console.error('Erro:', error);
-                alert('Houve um erro ao enviar a mensagem. Por favor, tente novamente.');
-            });
-    }    
+    // Interrompe o envio se o formulário não for válido
+    if (!isValid) {
+        event.preventDefault();
+    }
 });
