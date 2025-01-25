@@ -4,19 +4,18 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'gesualdiafonsoarr@gmail.com', // Insira seu email
-        pass: 'jhku svhr cyyt fwek'            // Insira sua senha ou app password
-    }
+        user: 'gesualdiafonsoarr@gmail.com', // Substitua pelo seu email
+        pass: 'jhku svhr cyyt fwek',        // Substitua pela senha ou App Password
+    },
 });
 
 module.exports = async (req, res) => {
     if (req.method === 'POST') {
         const { name, email, telefone, message, company } = req.body;
 
-        // Configuração do email
         const mailOptions = {
             from: email,
-            to: 'gesualdiafonsoarr@gmail.com', // Insira seu email de destino
+            to: 'gesualdiafonsoarr@gmail.com',
             subject: 'Novo formulário enviado',
             text: `
             Nome: ${name}
@@ -25,20 +24,21 @@ module.exports = async (req, res) => {
             Empresa: ${company || 'Não informada'}
             Mensagem:
             ${message}
-            `
+            `,
         };
 
         try {
-            // Envia o email
-            const info = await transporter.sendMail(mailOptions);
-            console.log('Email enviado:', info.response);
-            res.status(200).send({ message: 'Email enviado com sucesso!' });
+            // Enviar o e-mail
+            await transporter.sendMail(mailOptions);
+            console.log('Email enviado com sucesso');
+            res.writeHead(302, { Location: '/thanks.html' }); // Redireciona para a página de agradecimento
+            res.end();
         } catch (error) {
             console.error('Erro ao enviar email:', error);
-            res.status(500).send({ message: 'Erro ao enviar email.' });
+            res.status(500).json({ message: 'Erro ao enviar email.' });
         }
     } else {
-        // Método não permitido
-        res.status(405).send({ message: 'Método não permitido. Use POST.' });
+        res.setHeader('Allow', ['POST']);
+        res.status(405).json({ message: 'Método não permitido. Use POST.' });
     }
 };
