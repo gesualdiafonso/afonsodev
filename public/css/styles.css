@@ -42,15 +42,16 @@
 }
 body{
     margin: 0 auto;
-    min-width: 320px;
-    max-width: 1980px;
     background-color: #1e1f26;
+    padding: 0;
 
 }
 main{
     color: rgb(255, 253, 252);
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    min-width: 320px;
+    max-width: 1280px;
 }
 a{
     text-decoration: none;
@@ -707,6 +708,8 @@ button:focus {
     transform: scale(1.2);
 }
 
+
+
 .card-body a {
     display: inline-block;
     margin-top: 15px;
@@ -1000,7 +1003,7 @@ button:focus {
 }
 
 /* Desktops: 990px até 1980px */
-@media (min-width: 990px) and (max-width: 1980px){
+@media (min-width: 990px){
     p{
         font-size: 1.3rem;
     }
@@ -1206,5 +1209,49 @@ button:focus {
     .cta-button {
         font-size: 1.2rem;
         padding: 15px 30px;
+    }
+}
+/* Desktops Ultrawide: Acima de 1980px */
+@media (min-width: 1980px) {
+    p {
+        font-size: 1.4rem; /* Ajuste a fonte para telas maiores */
+    }
+    h2 {
+        font-size: 1.6rem; /* Aumenta o tamanho do h2 */
+    }
+    h3 {
+        font-size: 1.6rem; /* Aumenta o tamanho do h3 */
+    }
+    ul li {
+        font-size: 1.3rem; /* Ajuste para itens de lista */
+    }
+    span {
+        font-size: 1.3rem; /* Ajuste para spans */
+    }
+    .title, .title-2 {
+        font-size: 2.8rem; /* Aumenta o tamanho dos títulos */
+    }
+    .subtitle {
+        font-size: 2.2rem; /* Aumenta o tamanho do subtítulo */
+    }
+
+    nav {
+        height: 120px; /* Aumenta a altura da navbar */
+    }
+
+    .navbarElements ul {
+        font-size: 1.8vw; /* Ajusta a fonte dos links da navbar */
+    }
+
+    .motivation p {
+        font-size: 1.5rem; /* Ajuste para parágrafo em motivation */
+    }
+
+    .skill p {
+        font-size: 1.5rem; /* Ajuste para parágrafo em skill */
+    }
+
+    .soft-skills .lista li {
+        font-size: 1.6rem; /* Ajuste para soft skills */
     }
 }
